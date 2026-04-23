@@ -1,0 +1,31 @@
+{
+  "name": "chatgpt-image-2-skill",
+  "version": "0.1.0",
+  "description": "Claude Code skill for OpenAI gpt-image-2 — editorial typography, multi-image composition, infographics, meta-ad and viral LinkedIn image generation.",
+  "type": "module",
+  "main": "tools/generate.js",
+  "bin": {
+    "chatgpt-image": "tools/generate.js"
+  },
+  "scripts": {
+    "generate": "node tools/generate.js"
+  },
+  "keywords": [
+    "claude-code",
+    "skill",
+    "openai",
+    "gpt-image-2",
+    "image-generation",
+    "ai-image",
+    "infographic",
+    "meta-ad"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.17"
+  },
+  "dependencies": {
+    "openai": "^5.0.0",
+    "dotenv": "^16.4.5"
+  }
+}
