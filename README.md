@@ -177,6 +177,30 @@ Run: `node tools/generate.js --prompt "..." --size 3840x2160 --quality high`
 
 ---
 
+## Further inspiration — from OpenAI's launch gallery
+
+Capabilities we didn't render ourselves but the model absolutely handles. All three images below are from OpenAI's official gpt-image-2 documentation and are reproduced here as reference for what's possible. Source: [developers.openai.com/api/docs/guides/image-generation](https://developers.openai.com/api/docs/guides/image-generation).
+
+### Multi-image reference composition (Edits endpoint)
+
+![Premium gift basket composed from multiple reference product images, Relax & Unwind label, white studio background](examples/curated/openai-gift-basket.png)
+
+*Source: OpenAI gpt-image-2 docs.* Demonstrates the `/images/edits` endpoint combining multiple product reference images into one coherent scene — lotion, candle, soap, ribbon, and a handwritten "Relax & Unwind" label. This is the flow we expose via `--reference-image` stacked calls.
+
+### Artistic and surreal composition
+
+![A flowing river of white owl feathers cutting through a winter landscape, dreamlike surreal composition](examples/curated/openai-surreal-feathers.png)
+
+*Source: OpenAI gpt-image-2 docs.* Prompt: *"River made of white owl feathers through winter landscape."* Shows the model's range beyond editorial realism — impossible-in-reality imagery rendered with atmospheric depth. Use this direction for book covers, editorial spreads with a conceptual angle, artistic social-media visuals.
+
+### Intricate mechanical / product detail
+
+![Exploded-view mechanical wristwatch with exposed gears, jewels, and hand-finishing detail](examples/curated/openai-mechanical-watch.png)
+
+*Source: OpenAI gpt-image-2 docs.* Fine-gear watch movement — jewels, hand-finishing, intricate internal mechanism. Demonstrates the model's precision for e-commerce detail shots, patent-style illustrations, hero product renders where the subject IS the detail.
+
+---
+
 ## Install
 
 ```bash
