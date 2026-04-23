@@ -122,27 +122,29 @@ Run: `node tools/generate.js --prompt "..." --size 2048x3072 --quality high`
 
 ---
 
-### 3. Photorealistic product lifestyle shot — 16:9 landscape, 4K
+### 3. Editorial portrait with a person + real brand environment — 16:9 landscape, 4K
 
-![Moleskine notebook flatlay on walnut desk with fountain pen and espresso, overhead photoreal](examples/03-moleskine-flatlay.png)
+![Editorial portrait of a barista pulling espresso on a La Marzocco Linea Mini in a Blue Bottle Coffee shop, golden-hour window light, Mazzer grinder and Kinto cup visible, 35mm film aesthetic](examples/03-barista-portrait.png)
 
-*Rendered at `3840x2160` — true 4K 16:9 at the 8.29M pixel cap.*
+*Rendered at `3840x2160` — true 4K 16:9 at the 8.29M pixel cap. Real person, real products, real location, all in one composition.*
 
 **Prompt:**
 
 ```
-Cinematic lifestyle flatlay on a dark walnut desk, overhead angle.
+Cinematic editorial portrait, landscape 16:9. A female barista in her early 30s with short dark hair tucked behind her ears and subtle forearm tattoos, wearing a navy denim apron over a simple white t-shirt, concentrated focused expression, hands working the brass grouphead of a polished stainless and brass La Marzocco Linea Mini espresso machine.
 
-Center: a classic Moleskine Classic Notebook in black leatherette, closed, with its signature elastic band stretched across the front cover from top edge to bottom edge, about 1cm inset from the right edge. Render the elastic and leatherette texture accurately.
+Golden-hour morning light streaming through large industrial factory-style windows on the left, illuminating fine steam rising from the grouphead and casting long warm shadows across a reclaimed walnut counter.
 
-Left of the notebook: a matte-black fountain pen, cap off, nib pointed toward the spine. Right of the notebook: a single espresso in a white porcelain demitasse cup on a matching saucer, with two brown sugar cubes beside it.
+Background: softly blurred but recognizable -- a Blue Bottle Coffee shop interior in Williamsburg Brooklyn. The Blue Bottle wordmark and bottle icon visible on a ceramic mug in the midground. A red Mazzer grinder to the right. A chalkboard menu in the deep background. A soft out-of-focus customer seated at a window bench with a silver MacBook Pro.
 
-Morning overhead daylight, 45-degree cast shadows, warm color temperature. Photorealism, shallow depth of field, focus on the Moleskine elastic. Candid, unposed composition. No text or overlays.
+Technical: shot on a 50mm lens at f/2.0, shallow depth of field, sharp focus on the barista hands and on a thin dark-amber espresso stream pouring into a Kinto double-wall glass cup. Photorealism. 35mm film grain, warm color grade, natural skin tones, true-to-life fabric texture, realistic steam wisps.
+
+Candid, unposed editorial feel. Documentary photography aesthetic. No text overlays, no captions, no logos invented. Render all visible brand marks accurately.
 ```
 
 Run: `node tools/generate.js --prompt "..." --size 3840x2160 --quality high`
 
-**Why it works.** The Moleskine's signature elastic band, rounded corners, and leatherette finish are specific visual signatures -- a generic model would render a vague "notebook shape." `gpt-image-2` actually knows what a Moleskine looks like because it has seen real product imagery. Pair that with `photorealism` and specific light direction and the result is close to a real product photo. Swap "Moleskine" for any other iconic real product -- Aesop hand wash, a Polaroid SX-70, a Herman Miller Aeron -- and the same research-grounded accuracy carries over.
+**Why it works.** This single frame is doing what no other image model can hold simultaneously: a **real person** in a natural action pose, **multiple identifiable real brands in the same scene** (La Marzocco Linea Mini grouphead, Blue Bottle Coffee logo, Mazzer grinder, Kinto glass cup, MacBook Pro), a **real geographic location** (Blue Bottle Williamsburg aesthetic), **cinematic lighting direction**, and **documentary photography grammar** (50mm f/2.0, 35mm film grain, shallow DOF). The prompt layering — person → primary product action → brand environment → technical camera specs — is the recipe. Use this skeleton for any "person-plus-product" editorial: chef at a Le Creuset pass, photographer with a Leica Q3 in Shoreditch, architect at an Aeron chair in a Brooklyn studio. Swap the roles and brands, keep the layered structure, and the model ships a first-draft editorial photo every time.
 
 ---
 
