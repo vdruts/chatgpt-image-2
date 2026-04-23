@@ -1,4 +1,15 @@
-# chatgpt-image-2
+```
+██╗███╗   ███╗ █████╗  ██████╗ ███████╗      ██████╗ 
+██║████╗ ████║██╔══██╗██╔════╝ ██╔════╝      ╚════██╗
+██║██╔████╔██║███████║██║  ███╗█████╗  █████╗ █████╔╝
+██║██║╚██╔╝██║██╔══██║██║   ██║██╔══╝  ╚════╝██╔═══╝ 
+██║██║ ╚═╝ ██║██║  ██║╚██████╔╝███████╗      ███████╗
+╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝      ╚══════╝
+
+                ╔═╗╦ ╦╔═╗╔╦╗╔═╗╔═╗╔╦╗
+                ║  ╠═╣╠═╣ ║ ║ ╦╠═╝ ║ 
+                ╚═╝╩ ╩╩ ╩ ╩ ╚═╝╩   ╩ 
+```
 
 A [Claude Code](https://docs.claude.com/en/docs/claude-code) skill for OpenAI's `gpt-image-2`. Opinionated for the three jobs it actually wins on: **editorial typography, multi-image composition, and dense infographics.**
 
@@ -88,7 +99,12 @@ node tools/generate.js \
 --prompt "<text>"               Required. Image description.
 --reference-image <path>        Repeatable (up to 16). Adds a reference. Triggers Edits endpoint.
 --output <path>                 Output path. Default: ./output.png
---size <size>                   1024x1024 | 1024x1536 | 1536x1024 | auto. Default: auto
+--size <size>                   Any WxH where max edge ≤ 3840, both edges are
+                                multiples of 16, and long:short ratio ≤ 3:1.
+                                Common: 1024x1024, 1024x1536, 1536x1024,
+                                2048x2048, 3840x2160 (4K wide), 2160x3840
+                                (4K tall), 3840x3840 (4K square), 3840x1280
+                                (3:1 ultrawide), auto. Default: auto
 --quality <quality>             low | medium | high | auto. Default: high
 --model <model>                 gpt-image-2 | gpt-image-1.5 | gpt-image-1 | gpt-image-1-mini.
                                 Default: gpt-image-2
@@ -166,13 +182,33 @@ Add these ONLY when the base prompt underdelivers. Stacking them turns output mu
 - `candid, unposed` to defeat the default polished-studio look
 - `hand-drawn, pencil texture` for editorial illustration
 
-### 7. Aspect ratio changes the story
+### 7. Aspect ratio and resolution (up to 4K)
 
-A 3:2 landscape reads differently from a 2:3 portrait from a 1:1 square, even with the same prompt. Test at least two ratios for hero images. Default to `1024x1536` for LinkedIn and poster work, `1536x1024` for banners, `1024x1024` for everything else.
+`gpt-image-2` accepts any `WxH` that satisfies three constraints:
 
-### 8. Output size reality check
+- **Max edge ≤ 3840px** (true 4K)
+- **Both edges are multiples of 16**
+- **Long-to-short ratio ≤ 3:1**
 
-Max resolution is flexible, but outputs above **2560x1440** (2K) are experimental and get variable. Stick to the three documented sizes unless you have a reason.
+That opens up a much wider design space than "1024 or 1536." The ratio changes the reading experience as much as the content does — test at least two ratios for hero images. Defaults by use case:
+
+| Ratio | Use case | Standard | 4K / hi-res |
+|---|---|---|---|
+| 1:1 | Instagram post, avatar, square poster | `1024x1024` | `3840x3840` |
+| 2:3 | LinkedIn portrait, magazine cover | `1024x1536` | `2048x3072` |
+| 3:2 | Editorial landscape, hero banner | `1536x1024` | `3072x2048` |
+| 16:9 | YouTube thumbnail, widescreen hero | — | `3840x2160` |
+| 9:16 | Reels, TikTok, Stories, vertical mobile | — | `2160x3840` |
+| 4:3 | Classic photo landscape | `1024x768` | `2048x1536` |
+| 3:4 | Classic photo portrait | `768x1024` | `1536x2048` |
+| 2:1 | Wide banner, ticket-style layout | `1536x768` | `3072x1536` |
+| 3:1 | Max-allowed ultrawide (hero strip, OG header) | — | `3840x1280` |
+
+Notes:
+- **`1920x1080` does NOT work** — 1080 is not a multiple of 16. Use `3840x2160` for exact 16:9 at 4K, or `1920x1088` for a close-to-16:9 frame at 2K.
+- **`auto`** lets the model choose a shape that matches your prompt. Useful early. Lock a specific size once the composition is committed.
+- **Cost scales with `size × quality`.** 4K at `--quality high` is the most expensive combination. The standard workflow: iterate at `1024` on `--quality low`, commit the composition, then re-render the winning prompt at 4K on `--quality high` for the final deliverable.
+- **High-DPI screens and print love 4K.** 3840px on the long edge maps cleanly to retina displays and gives you headroom for poster print at 300 DPI up to ~13 inches.
 
 ---
 
