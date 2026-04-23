@@ -6,9 +6,9 @@
 ██║██║ ╚═╝ ██║██║  ██║╚██████╔╝███████╗      ███████╗
 ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝      ╚══════╝
 
-                ╔═╗╦ ╦╔═╗╔╦╗╔═╗╔═╗╔╦╗
-                ║  ╠═╣╠═╣ ║ ║ ╦╠═╝ ║ 
-                ╚═╝╩ ╩╩ ╩ ╩ ╚═╝╩   ╩ 
+╔═╗╦ ╦╔═╗╔╦╗╔═╗╔═╗╔╦╗
+║  ╠═╣╠═╣ ║ ║ ╦╠═╝ ║ 
+╚═╝╩ ╩╩ ╩ ╩ ╚═╝╩   ╩ 
 ```
 
 A [Claude Code](https://docs.claude.com/en/docs/claude-code) skill for OpenAI's `gpt-image-2`. Opinionated for the three jobs it actually wins on: **editorial typography, multi-image composition, and dense infographics.**
