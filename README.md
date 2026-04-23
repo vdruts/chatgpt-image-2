@@ -135,7 +135,7 @@ Run: `node tools/generate.js --prompt "..." --size 3840x2160 --quality high`
 ## Install
 
 ```bash
-git clone https://github.com/vdruts/chatgpt-image-2 ~/.claude/skills/chatgpt-image-2
+git clone https://github.com/vdruts/ChatGPT-Image-2 ~/.claude/skills/chatgpt-image-2
 cd ~/.claude/skills/chatgpt-image-2
 npm install
 ```
